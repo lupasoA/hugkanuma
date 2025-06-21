@@ -8,104 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <!-- AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <style>
-    :root {
-      --color-primary: #ff8360;
-      --color-secondary: #ffb88c;
-      --color-bg: #fdfdfd;
-      --color-dark: #333;
-      --color-light: #fff;
-      --font: 'Poppins', sans-serif;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font); color: var(--color-dark); background: var(--color-bg); line-height: 1.6; }
-    a { text-decoration: none; color: inherit; }
-    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-    header { position: sticky; top: 0; background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); z-index: 100; }
-    .header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
-    .logo { font-size: 1.6rem; font-weight: 700; color: var(--color-primary); }
-    .nav { display: flex; gap: 1.5rem; }
-    .nav a { position: relative; padding: .5rem; font-weight: 600; transition: color .3s; }
-    .nav a::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: var(--color-primary); transition: width .3s; }
-    .nav a:hover { color: var(--color-primary); }
-    .nav a:hover::after { width: 100%; }
-
-    /* Hero */
-    .hero { position: relative; background: var(--color-primary); height: 100vh; display: flex; align-items: center; justify-content: center; }
-    .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom right, rgba(255,131,96,0.7), rgba(255,184,140,0.7)); }
-    .hero .container { position: relative; color: var(--color-light); text-align: center; z-index: 1; }
-    .hero h1 { font-size: 3.2rem; font-weight: 700; margin-bottom: 1rem; animation: fadeInDown .8s ease-in-out; }
-    .hero p { font-size: 1.3rem; margin-bottom: 2rem; opacity: .9; animation: fadeInUp .8s ease-in-out; }
-    .btn-primary { display: inline-block; padding: 1rem 2.5rem; background: var(--color-light); color: var(--color-primary); border-radius: 50px; font-weight: 700; transition: background .3s, transform .3s; }
-    .btn-primary:hover { background: var(--color-secondary); transform: translateY(-3px); }
-
-    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px);} to { opacity:1; transform:translateY(0);} }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px);} to { opacity:1; transform:translateY(0);} }
-
-    /* Section Titles */
-    .section-title { text-align: center; font-size: 2.2rem; font-weight: 600; margin: 4rem 0 2rem; position: relative; }
-    .section-title::after { content: ''; width: 80px; height: 4px; background: var(--color-primary); display: block; margin: .5rem auto 0; border-radius: 2px; }
-
-    /* Features */
-    .features { background: var(--color-light); padding: 3rem 0; }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 2rem; }
-    .feature { background: var(--color-bg); text-align: center; padding: 2rem 1.5rem; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); transition: transform .3s; }
-    .feature:hover { transform: translateY(-10px); }
-    .feature h3 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--color-primary); }
-    .feature p { color: #555; font-size: 1.1rem; }
-
-    /* Summary */
-    .summary { padding: 3rem 0; }
-    .summary ul { list-style: none; max-width: 600px; margin: 0 auto; padding: 0 1rem; }
-    .summary li { display: flex; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid #eee; }
-    .summary li strong { color: var(--color-primary); }
-
-    /* Testimonial */
-    .testimonials { background: var(--color-light); padding: 3rem 0; }
-    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 2.5rem; }
-    .testimonial { background: var(--color-bg); padding: 2.5rem; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); text-align: center; }
-    .testimonial img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; }
-    .testimonial p { font-size: 1rem; margin-bottom: .75rem; }
-    .testimonial strong { color: var(--color-primary); }
-
-    /* Flow */
-    .flow { padding: 3rem 0; }
-    .flow-list { display: flex; flex-direction: column; gap: 1.5rem; max-width: 450px; margin: 0 auto; }
-    .flow-item { display: flex; align-items: center; gap: 1rem; background: var(--color-light); padding: 1rem 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-    .flow-item::before { content: counter(step); counter-increment: step; width: 36px; height: 36px; background: var(--color-primary); color: var(--color-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 1.1rem; }
-    .flow-list { counter-reset: step; }
-
-    /* Form */
-    .apply { background: var(--color-light); padding: 3rem 0; }
-    .form { max-width: 520px; margin: 0 auto; padding: 0 1rem; }
-    .form label { display: block; margin-bottom: 1.2rem; font-weight: 500; }
-    .form input, .form textarea { width: 100%; padding: .9rem; border: 1px solid #ccc; border-radius: 10px; margin-top: .5rem; transition: border-color .3s; }
-    .form input:focus, .form textarea:focus { border-color: var(--color-primary); outline: none; }
-    .form button { margin-top: 1.5rem; width: 100%; padding: 1rem; background: var(--color-primary); color: var(--color-light); border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: background .3s, transform .3s; }
-    .form button:hover { background: var(--color-secondary); transform: translateY(-2px); }
-
-    /* FAQ */
-    .faq { padding: 3rem 0; }
-    .faq-item { max-width: 700px; margin: 1.2rem auto; padding: 0 1rem; }
-    .faq-item h3 { font-weight: 600; margin-bottom: .5rem; }
-    .faq-item p { color: #555; }
-
-    /* Footer */
-    footer { position: relative; color: var(--color-light); text-align: center; padding: 2.5rem 1rem; }
-    footer::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom right, rgba(255,131,96,0.7), rgba(255,184,140,0.7)); z-index: -1; }
-    footer .container { position: relative; z-index: 1; }
-    footer p { margin-bottom: .8rem; }
-    footer .sns a { margin: 0 .6rem; display: inline-block; transition: transform .3s; }
-    footer .sns a:hover { transform: translateY(-2px); }
-    footer .sns img { width: 28px; filter: brightness(0) invert(1); }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2.4rem; }
-      .hero p { font-size: 1.1rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
@@ -206,11 +109,5 @@
       <p>© 2025 Hug</p>
     </div>
   </footer>
-
-  <!-- AOS Initialization -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 800, once: true });
-  </script>
 </body>
 </html>
