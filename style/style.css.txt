@@ -1,0 +1,189 @@
+/* style.css */
+/* リセット＆ベース */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+.section-title {
+  text-align: center;
+  font-size: 1.8rem;
+  margin: 2rem 0 1rem;
+}
+
+/* ヒーロー */
+.hero {
+  position: relative;
+  background: url('hero.jpg') center/cover no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+.hero__content {
+  position: relative;
+  color: #fff;
+  padding: 0 1rem;
+}
+.hero__title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.hero__subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+.btn--primary {
+  background: #ff7f50;
+  color: #fff;
+  border-radius: 4px;
+}
+
+/* 特徴セクション */
+.features__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+.feature {
+  text-align: center;
+}
+.feature img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 0.5rem;
+}
+
+/* サマリー */
+.summary__list {
+  list-style: none;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.summary__list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* テスティモニアル */
+.testimonials__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+.testimonial {
+  max-width: 300px;
+  text-align: center;
+}
+.testimonial img {
+  width: 100%;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+/* フロー */
+.flow__list {
+  max-width: 400px;
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
+}
+.flow__list li {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+.flow__list li::before {
+  content: counter(step);
+  counter-increment: step;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #ff7f50;
+  color: #fff;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  border-radius: 50%;
+}
+.flow__list {
+  counter-reset: step;
+}
+
+/* 応募フォーム */
+.apply__form {
+  max-width: 500px;
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+}
+.apply__form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+.apply__form input,
+.apply__form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.apply__form button {
+  margin-top: 1rem;
+}
+
+/* FAQ */
+.faq__item {
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: 0 1rem;
+}
+.faq__item h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* フッター */
+.footer {
+  background: #f8f8f8;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+.footer__sns a {
+  margin: 0 0.5rem;
+}
+.footer__sns img {
+  width: 24px;
+}
+
+/* モバイル調整 */
+@media (max-width: 600px) {
+  .hero__title {
+    font-size: 2rem;
+  }
+  .features__list {
+    gap: 1rem;
+  }
+}
